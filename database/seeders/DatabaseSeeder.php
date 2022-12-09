@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -29,6 +30,8 @@ class DatabaseSeeder extends Seeder
                 'nama_desa' => Str::random(8),
                 'website' => 'www.open_desa/'.Str::random(8).'.com',
                 'luas_wilayah' => 1200.24,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ]);
         }      
     }
