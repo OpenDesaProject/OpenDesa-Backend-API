@@ -26,9 +26,9 @@ class BeritaDesaController extends Controller
     private function getFeeds()
     {
         $all_desa = DataDesa::websiteUrl()->get()
-        ->map(function ($desa) {
-            return $desa->website_url_feed;
-        })->all();
+            ->map(function ($desa) {
+                return $desa->website_url_feed;
+            })->all();
 
         $feeds = [];
         foreach ($all_desa as $desa) {
