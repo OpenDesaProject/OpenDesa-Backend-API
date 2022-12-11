@@ -28,3 +28,10 @@ Route::get('/potensi', [PotensiController::class, 'index']);
 Route::post('/potensi', [PotensiController::class, 'store']);
 Route::get('potensi/{kategori}', [PotensiController::class, 'getByCategory']);
 Route::get('potensi/{kategori}/{slug}', [PotensiController::class, 'getByCategoryName']);
+
+//Unduhan Open Desa
+Route::post('OpenDesa/unduhan', [UnduhanController::class, 'store']);
+Route::get('OpenDesa/unduhan', [UnduhanController::class, 'download']);
+Route::get('OpenDesa/unduhan/{kategori}', [UnduhanController::class, 'getByCategory']);
+Route::get('OpenDesa/unduhan/{kategori}/{slug}', [UnduhanController::class, 'getByCategoryName']);
+Route::get('OpenDesa/unduhan/search', [UnduhanController::class, 'search']);
