@@ -3,7 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,5 +23,18 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        for ($i = 0; $i < 12; $i++) {
+            DB::table('data_desas')->insert([
+                'desa_id' => Str::random(10),
+                'kecamatan_id' => Str::random(7),
+                'nama_desa' => Str::random(8),
+                'website' => 'www.open_desa/' . Str::random(8) . '.com',
+                'luas_wilayah' => 1200.24,
+                'path' => Str::random(8),
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ]);
+        }
     }
 }
