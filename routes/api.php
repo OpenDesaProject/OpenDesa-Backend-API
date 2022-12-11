@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BeritaDesaController;
 
+use App\Http\Controllers\PotensiController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -23,3 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('berita-desa', [BeritaDesaController::class, 'index']);
 Route::get('/data_desa', [DataDesaController::class, 'getAllDataDesa']);
 Route::get('/data_desa/{id}', [DataDesaController::class, 'getOneDataDesa']);
+Route::get('/potensi', [PotensiController::class, 'index']);
+Route::post('/potensi', [PotensiController::class, 'store']);
+Route::get('potensi/{kategori}', [PotensiController::class, 'getByCategory']);
+Route::get('potensi/{kategori}/{slug}', [PotensiController::class, 'getByCategoryName']);

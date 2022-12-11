@@ -24,15 +24,15 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        for($i = 0; $i < 12; $i++) {
+        for ($i = 0; $i < 12; $i++) {
             DB::table('data_desas')->insert([
                 'kode_desa' => Str::random(8),
                 'nama_desa' => Str::random(8),
-                'website' => 'www.open_desa/'.Str::random(8).'.com',
+                'website' => 'www.open_desa/' . Str::random(8) . '.com',
                 'luas_wilayah' => 1200.24,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ]);
-        }      
+        }
     }
 }
