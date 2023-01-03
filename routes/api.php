@@ -5,7 +5,7 @@ use App\Http\Controllers\ComplaintController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BeritaDesaController;
-
+use App\Http\Controllers\UnduhanController;
 use App\Http\Controllers\PotensiController;
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('berita-desa', [BeritaDesaController::class, 'index']);
+Route::get('/berita-desa', [BeritaDesaController::class, 'index']);
 Route::get('/data_desa', [DataDesaController::class, 'getAllDataDesa']);
 Route::get('/data_desa/{id}', [DataDesaController::class, 'getOneDataDesa']);
 Route::get('/potensi', [PotensiController::class, 'index']);
@@ -37,3 +37,10 @@ Route::delete('/complaints/{id}', [ComplaintController::class, 'destroy']);
 Route::get('/complaints/user/{uid}', [ComplaintController::class, 'getByUid']);
 
 Route::delete('/attachments/{id}', [ComplaintController::class, 'deleteAttachment']);
+
+//Unduhan Open Desa
+Route::post('/unduhan', [UnduhanController::class, 'store']);
+Route::get('/unduhan/{id}', [UnduhanController::class, 'download']);
+Route::get('/unduhan/{kategori}', [UnduhanController::class, 'getByCategory']);
+Route::get('/unduhan/{kategori}/{slug}', [UnduhanController::class, 'getByCategoryName']);
+Route::get('/unduhan/search', [UnduhanController::class, 'search']);
