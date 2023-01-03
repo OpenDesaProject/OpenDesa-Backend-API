@@ -38,15 +38,18 @@ class UnduhanController extends Controller
         return $this->successfulResponse($data, "Berhasil membuat file unduhan");
     }
 
-    function download(Request $request)
+    function download($id)
     {
-        if (Storage::disk('public')->exists("file/unduhan/" . $request->file))
-        {
-            $path = Storage::disk('public')->path("file/unduhan/" . $request->file);
-            $content = file_get_contents($path);
-            return response($content, 200, [
-                'Content-Type' => mime_content_type($path)
-            ]);
+        $data_desa = Unduhan::find($id);
+        $file = $data_desa['file'];
+        if (Storage::disk('public')->exists("file/unduhan/" . $file)) {
+            // $path = Storage::disk('public')->urldecode("file/unduhan/" . $file);
+            // echo $path;
+            // $content = file_get_contents($path);
+            // return response($content, 200, [
+            //     'Content-Type' => mime_content_type($path)
+            // ]);
+            return Storage::download("file/unduhan/" . $file);
         }
 
         return $this->notFoundResponse("File tidak ditemukan");
@@ -56,7 +59,7 @@ class UnduhanController extends Controller
     {
         $data = Unduhan::where("kategori", $kategori)->get();
 
-        return $this->successfulResponse($data, "Berhasil mendapatkan semua file dengan kategori ". $kategori);
+        return $this->successfulResponse($data, "Berhasil mendapatkan semua file dengan kategori " . $kategori);
     }
 
     function getByCategoryName($kategori, $slug)
@@ -64,10 +67,10 @@ class UnduhanController extends Controller
         $data = Unduhan::where([
             'kategori' => $kategori,
             'slug' => $slug,
-            ])->first();
+        ])->first();
 
         if ($data) {
-            return $this->successfulResponse($data, "Berhasil mendapatkan ". $data['nama']);
+            return $this->successfulResponse($data, "Berhasil mendapatkan " . $data['nama']);
         }
     }
 
@@ -75,8 +78,8 @@ class UnduhanController extends Controller
     {
         $nama = $_GET['query'];
         $data = Unduhan::where('nama', 'like', '%' . $nama . '%')
-        ->orWhere('deskripsi', 'like', '%' . $nama . '%')
-        ->orWhere('kategori', 'like', '%' . $nama . '%')->get();
+            ->orWhere('deskripsi', 'like', '%' . $nama . '%')
+            ->orWhere('kategori', 'like', '%' . $nama . '%')->get();
 
         return $this->successfulResponse($data, "Ini hasil pencarian");
     }

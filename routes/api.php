@@ -4,7 +4,7 @@ use App\Http\Controllers\DataDesaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BeritaDesaController;
-
+use App\Http\Controllers\UnduhanController;
 use App\Http\Controllers\PotensiController;
 /*
 |--------------------------------------------------------------------------
@@ -21,17 +21,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('berita-desa', [BeritaDesaController::class, 'index']);
+Route::get('/berita-desa', [BeritaDesaController::class, 'index']);
 Route::get('/data_desa', [DataDesaController::class, 'getAllDataDesa']);
 Route::get('/data_desa/{id}', [DataDesaController::class, 'getOneDataDesa']);
 Route::get('/potensi', [PotensiController::class, 'index']);
 Route::post('/potensi', [PotensiController::class, 'store']);
-Route::get('potensi/{kategori}', [PotensiController::class, 'getByCategory']);
-Route::get('potensi/{kategori}/{slug}', [PotensiController::class, 'getByCategoryName']);
+Route::get('/potensi/{kategori}', [PotensiController::class, 'getByCategory']);
+Route::get('/potensi/{kategori}/{slug}', [PotensiController::class, 'getByCategoryName']);
 
 //Unduhan Open Desa
-Route::post('OpenDesa/unduhan', [UnduhanController::class, 'store']);
-Route::get('OpenDesa/unduhan', [UnduhanController::class, 'download']);
-Route::get('OpenDesa/unduhan/{kategori}', [UnduhanController::class, 'getByCategory']);
-Route::get('OpenDesa/unduhan/{kategori}/{slug}', [UnduhanController::class, 'getByCategoryName']);
-Route::get('OpenDesa/unduhan/search', [UnduhanController::class, 'search']);
+Route::post('/unduhan', [UnduhanController::class, 'store']);
+Route::get('/unduhan/{id}', [UnduhanController::class, 'download']);
+Route::get('/unduhan/{kategori}', [UnduhanController::class, 'getByCategory']);
+Route::get('/unduhan/{kategori}/{slug}', [UnduhanController::class, 'getByCategoryName']);
+Route::get('/unduhan/search', [UnduhanController::class, 'search']);
