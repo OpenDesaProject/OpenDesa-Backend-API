@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DataDesaController;
+use App\Http\Controllers\ComplaintController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BeritaDesaController;
@@ -28,3 +29,11 @@ Route::get('/potensi', [PotensiController::class, 'index']);
 Route::post('/potensi', [PotensiController::class, 'store']);
 Route::get('potensi/{kategori}', [PotensiController::class, 'getByCategory']);
 Route::get('potensi/{kategori}/{slug}', [PotensiController::class, 'getByCategoryName']);
+Route::get('/complaints', [ComplaintController::class, 'index']);
+Route::post('/complaints', [ComplaintController::class, 'store']);
+Route::get('/complaints/{id}', [ComplaintController::class, 'show']);
+Route::put('/complaints/{id}', [ComplaintController::class, 'update']);
+Route::delete('/complaints/{id}', [ComplaintController::class, 'destroy']);
+Route::get('/complaints/user/{uid}', [ComplaintController::class, 'getByUid']);
+
+Route::delete('/attachments/{id}', [ComplaintController::class, 'deleteAttachment']);
