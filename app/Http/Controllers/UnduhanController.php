@@ -49,7 +49,7 @@ class UnduhanController extends Controller
             // return response($content, 200, [
             //     'Content-Type' => mime_content_type($path)
             // ]);
-            return Storage::download("file/unduhan/" . $file);
+            return Storage::download("public/file/unduhan/" . $file);
         }
 
         return $this->notFoundResponse("File tidak ditemukan");
