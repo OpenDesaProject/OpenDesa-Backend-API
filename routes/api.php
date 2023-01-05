@@ -29,6 +29,7 @@ Route::get('/potensi', [PotensiController::class, 'index']);
 Route::post('/potensi', [PotensiController::class, 'store']);
 Route::get('potensi/{kategori}', [PotensiController::class, 'getByCategory']);
 Route::get('potensi/{kategori}/{slug}', [PotensiController::class, 'getByCategoryName']);
+Route::get('potensi/download/{kategori}/{slug}', [PotensiController::class, 'download']);
 Route::get('/complaints', [ComplaintController::class, 'index']);
 Route::post('/complaints', [ComplaintController::class, 'store']);
 Route::get('/complaints/{id}', [ComplaintController::class, 'show']);
