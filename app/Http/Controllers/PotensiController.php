@@ -84,4 +84,21 @@ class PotensiController extends Controller
             return $this->successfulResponse($data, "Berhasil Mendapatkan ". $data['nama']);
         }
     }
+
+    public function download ($kategori, $slug)
+    {
+        $data = Potensi::where([
+            'kategori' => $kategori,
+            'slug' => $slug,
+            ])->first();
+
+        if ($data) {
+            $file = $data['file'];
+        if (Storage::disk('public')->exists("file/potensi/" . $file)) {
+            $path = Storage::url("public/file/potensi/" . $file);
+            return '<img src="' . $path . '" alt="">';
+        }
+            return $this->successfulResponse($data, "Berhasil Mendapatkan ". $data['nama']);
+        }
+    }
 }
