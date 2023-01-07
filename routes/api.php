@@ -23,6 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/berita-desa', [BeritaDesaController::class, 'index']);
+Route::get('/berita-desa/search', [BeritaDesaController::class, 'search']);
 Route::get('/data_desa', [DataDesaController::class, 'getAllDataDesa']);
 Route::get('/data_desa/{id}', [DataDesaController::class, 'getOneDataDesa']);
 Route::get('/potensi', [PotensiController::class, 'index']);

@@ -53,7 +53,17 @@ class BeritaDesaController extends Controller
 
         return $feeds ?? null;
     }
-
+    public function search(){
+        $search = $_GET['search'];
+        $data = $this->getFeeds();
+        $feeds = collect($data)->sortByDesc('date')->take(config('setting.jumlah_artikel_desa') ?? 30);
+        $feeds->all();
+        // dd($feeds);
+        $feeds = $feeds->filter(function ($value, $key) use ($search) {
+            return str_contains(strtolower($value['title']), strtolower($search));
+        });
+        return response()->json([$feeds]);
+    }
     /**
      * Show the form for creating a new resource.
      *
