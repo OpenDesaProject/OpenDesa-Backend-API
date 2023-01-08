@@ -43,6 +43,6 @@ Route::delete('/attachments/{id}', [ComplaintController::class, 'deleteAttachmen
 //Unduhan Open Desa
 Route::post('/unduhan', [UnduhanController::class, 'store']);
 Route::get('/unduhan/{id}', [UnduhanController::class, 'download']);
-Route::get('/unduhan/{kategori}', [UnduhanController::class, 'getByCategory']);
+Route::get('/unduhan/kategori/{kategori}', [UnduhanController::class, 'getByCategory']);
 Route::get('/unduhan/{kategori}/{slug}', [UnduhanController::class, 'getByCategoryName']);
 Route::get('/unduhan/search', [UnduhanController::class, 'search']);
