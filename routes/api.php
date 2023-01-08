@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BeritaDesaController;
 use App\Http\Controllers\UnduhanController;
 use App\Http\Controllers\PotensiController;
+use App\Http\Controllers\KabupatenController;
+use App\Http\Controllers\KecamatanController;
+use App\Http\Controllers\ProvinsiController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -46,3 +49,9 @@ Route::get('/unduhan/{id}', [UnduhanController::class, 'download']);
 Route::get('/unduhan/kategori/{kategori}', [UnduhanController::class, 'getByCategory']);
 Route::get('/unduhan/{kategori}/{slug}', [UnduhanController::class, 'getByCategoryName']);
 Route::get('/unduhan/search', [UnduhanController::class, 'search']);
+
+Route::get('/provinsi', [ProvinsiController::class, 'get']);
+Route::get('/kabupaten', [KabupatenController::class, 'get']);
+Route::get('/kecamatan', [KecamatanController::class, 'get']);
+Route::get('/kecamatan/{id}', [KecamatanController::class, 'show']);
+Route::get('/desa', [DesaController::class, 'get']);

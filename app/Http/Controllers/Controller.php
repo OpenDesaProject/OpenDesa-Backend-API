@@ -9,9 +9,9 @@ use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+  use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function successfulResponse($result, $message, $http_code = 200)
+  public function successfulResponse($result, $message, $http_code = 200)
   {
     $response = [
       "success" => true,

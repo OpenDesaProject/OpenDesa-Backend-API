@@ -213,6 +213,6 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Feeds'    => willvincent\Feeds\Facades\FeedsFacade::class,
     ])->toArray(),
-    
+
 
 ];
